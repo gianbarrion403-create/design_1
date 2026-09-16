@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice design ni Gian</title>
+    <style>
+        /* ==========================================
+           1. RESET & GENERAL STYLES
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #000000; /* Plain Black Background */
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ==========================================
+           2. KEYFRAME ANIMATIONS (Entrance & Floating)
+           ========================================== */
+        
+        /* Fade in and slide up animation for main container */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Continuous gentle floating effect */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Animated purple glow pulse */
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(168, 85, 247, 0.8);
+            }
+        }
+
+        /* ==========================================
+           3. NAVBAR STYLES
+           ========================================== */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #a855f7; /* Electric Purple */
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-links a:hover {
+            color: #c084fc;
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================
+           4. HERO SECTION STYLES
+           ========================================== */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+            
+            /* Entry animation applied to the whole section */
+            animation: fadeInUp 1.2s ease-out forwards;
+        }
+
+        .badge {
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: #c084fc;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            max-width: 900px;
+            background: linear-gradient(135deg, #ffffff 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #a0a0a0;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* ==========================================
+           5. ANIMATED BUTTONS
+           ========================================== */
+        .btn-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Primary Glowing Button */
+        .btn-primary {
+            position: relative;
+            background: linear-gradient(135deg, #a855f7, #7e22ce);
+            color: #ffffff;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            animation: pulseGlow 3s infinite;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.03);
+            background: linear-gradient(135deg, #c084fc, #9333ea);
+            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.6);
+        }
+
+        /* Secondary Outline Button */
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            padding: 1rem 2.5rem;
+            border: 2px solid #a855f7;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(168, 85, 247, 0.15);
+            border-color: #c084fc;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(168, 85, 247, 0.3);
+        }
+
+        /* ==========================================
+           6. FEATURE CARDS (STAGGERED ANIMATION)
+           ========================================== */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .card {
+            background: #0a0a0a;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        /* Staggered delay for cards */
+        .card:nth-child(1) { animation-delay: 0.3s; }
+        .card:nth-child(2) { animation-delay: 0.5s; }
+        .card:nth-child(3) { animation-delay: 0.7s; }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #a855f7;
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.25);
+            background: #110d18;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: #a855f7;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+        }
+
+        .card p {
+            color: #888888;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#" class="logo">logo<span>★</span></a>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="badge">✦ Ang pogi mo Gian</div>
+        <h1>Swabe lang</h1>
+        <p>Practice design ni Gian</p>
+        
+        <div class="btn-container">
+            <a href="#" class="btn-primary">Get Started Now</a>
+            <a href="#" class="btn-secondary">Explore More</a>
+        </div>
+    </section>
+
+    <!-- Animated Feature Cards Section -->
+    <section class="features">
+        <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>Fast Performance</h3>
+            <p>Designed with lightweight pure CSS animations for smooth 60fps frame rates.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🎨</div>
+            <h3>Modern Aesthetics</h3>
+            <p>A striking dark aesthetic balanced with vibrant neon purple highlights.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🚀</div>
+            <h3>Fully Responsive</h3>
+            <p>Adapts fluidly across all mobile, tablet, and desktop display sizes.</p>
+        </div>
+    </section>
+
+</body>
+</html>
